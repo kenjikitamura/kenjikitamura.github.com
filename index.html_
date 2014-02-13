@@ -9,7 +9,7 @@
   <meta name="author" content="Your Name">
 
   
-  <meta name="description" content=" TOP ふがあ Recent Posts ">
+  <meta name="description" content=" Blog Archives Recent Posts ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kenjikitamura.github.io">
+  <link rel="canonical" href="http://kenjikitamura.github.io/_">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
@@ -63,18 +63,15 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div>
-<article role="article">
+      <div class="blog-index">
   
-  <h1>TOP</h1>
-
-<p>ふがあ</p>
-
   
-</article>
-
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
 </div>
-
 <aside class="sidebar">
   
     <section>
@@ -90,7 +87,6 @@
 
   
 </aside>
-
 
     </div>
   </div>

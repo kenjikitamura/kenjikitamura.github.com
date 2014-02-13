@@ -1,16 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://kenjikitamura.github.io/</loc>
-        <lastmod>2014-02-13T19:02:34+09:00</lastmod>
-    </url>
-    <url>
         <loc>http://kenjikitamura.github.io/blog/archives/</loc>
         <lastmod>2014-02-13T19:02:34+09:00</lastmod>
     </url>
     <url>
+        <loc>http://kenjikitamura.github.io/</loc>
+        <lastmod>2014-02-13T19:20:14+09:00</lastmod>
+    </url>
+    <url>
         <loc>http://kenjikitamura.github.io/hoge/</loc>
         <lastmod>2014-02-13T19:15:15+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://kenjikitamura.github.io/index.html_</loc>
+        <lastmod>2014-02-13T19:02:34+09:00</lastmod>
     </url>
     <url>
         <loc>http://kenjikitamura.github.io/robots.txt</loc>
