@@ -1,0 +1,74 @@
+---
+layout: page
+title: "Android"
+date: 2014-02-15 20:27
+comments: true
+sharing: true
+footer: true
+---
+
+## Androidについてのメモです
+### AndroidManifest
+Androidアプリで一番重要な設定XMLファイルです。
+
+* アプリの権限
+* Activityの定義
+* Serviceの定義
+* Receiverの定義
+
+などなどを行います。
+ActivityやServiceのクラスを作成して、AndroidManifestに定義を追加するのを忘れて「Activity起動しないよー」となっちゃうので注意しましょう。
+
+#### いろいろな"Version"
+AndroidManifestには、いろいろバージョンを指定する部分があります。何がどのような意味を持っているのかを確認してみましょう。
+
+* manifest要素のversionCode属性
+
+アプリケーションの内部的なバージョンを表します。versionCodeは通常ユーザには見えないバージョンで、システムがより新しいアプリケーションかどうかを判断する際に使用します。Play Storeでアプリ公開時に1からスタートし、バージョンアップを公開するたびに1ずつ上げるのが基本的な使い方です。
+
+場合によっては、後述するversionNameとそろえて、1.0.0だと10000、1.3.2だと10302みたいにつけるとわかりやすかったりもします。
+
+新しいバージョンを公開する際は、必ずversionCodeの増加が必要です。でないと新しいバージョンと認識されませんし、そもそもPlay Storeへのアップロードができなかったかと思います。
+
+versionCodeは[integerと定義](http://developer.android.com/guide/topics/manifest/manifest-element.html)されているので、最大値は2147483647となっています。
+[Androidの内部的](http://tools.oesf.biz/android-4.4.2_r1.0/xref/frameworks/base/core/java/android/content/pm/PackageInfo.java)にもintとして持っていますね。
+
+versionCodeがintの最大値である2147483647に達してしまうと、バージョンアップするときにはどうなっちゃうんでしょうか。
+
+* manifest要素のversionName属性
+
+ユーザに見えるバージョンです。stringなので、文字列を指定します。"1.0.1"とか、"0.0.2 Beta"とかですね。システム的にはユーザに見せる以外には使っていないので、ユーザにわかりやすい値を指定します。最大文字数は特にドキュメントに定義されていませんでした。Androidのフレームワーク的にも[AndroidManifest読み込み時](http://tools.oesf.biz/android-4.4.2_r1.0/xref/frameworks/base/core/java/android/content/res/TypedArray.java#getNonConfigurationString)に特に文字数制限はしておりません。
+
+* uses-sdk要素のminSdkVersion属性
+
+uses-sdk要素は、アプリケーションが要求するAPIレベルを指定します。APIレベルとは、Androidプラットホームで提供されるフレームワークAPIのリビジョンを一意に識別する数値です。APIレベルについて詳しくは[こちら](http://www.techdoctranslator.com/android/appendix/api-levels)。minSdkVersion属性はアプリケーションが必要とする一番小さいAPI
+
+* uses-sdk要素のtargetSdkVersion属性
+* uses-sdk要素のmaxSdkVersion属性
+
+### Activity
+#### Activityの定義
+#### Activityの起動方法
+#### Activityのライフサイクル
+### 設定画面の作り方
+
+### その他
+#### AttributeSetでgetAttributeValueしても値が取れないよ！と言うとき
+Viewのコンストラクタで、AttributeSetの値を取りたいことがあります。
+attrs.getAttributeValue("android", "onClick");
+してもnullしか返らないよ！と思ったら、Namespaceのandroidはエイリアスなので、元の長いものを指定しないとダメです。
+
+attrs.getAttributeValue("http://schemas.android.com/apk/res/android", "onClick");
+とすればいけます。
+
+#### Activityを前面に移動させる。
+あるActivity内で処理を開始し、バックグラウンドで処理を実行する事があります。
+その際、当然ホーム画面や他の画面に移動することができますが、処理が完了した後に元のActivityを表示したいことがあります。そんな時は次のIntentを投げてあげればOK。
+
+
+``` java
+Intent intent = new Intent(context, HogeActivity.class);
+intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+startActivity(intent);
+```
